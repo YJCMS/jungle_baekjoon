@@ -12,20 +12,20 @@ def dijkstra(graph, start):
     if distances[current_destination] < current_distance:  # 기존에 있는 거리보다 길다면, 볼 필요도 없음
       continue
     
+    
     for new_destination, new_distance in graph[current_destination].items():
       distance = current_distance + new_distance  # 해당 노드를 거쳐 갈 때 거리
-      if distance < distances[new_destination]:  # 알고 있는 거리 보다 작으면 갱신
+      if distance < distances[new_destination]:  # 알고 있는 거리 보다 작으면 갱신(새로운 지름길을 갱신하는 작업)
         distances[new_destination] = distance
-        heapq.heappush(queue, [distance, new_destination])  # 다음 인접 거리를 계산 하기 위해 큐에 삽입
+        heapq.heappush(queue, [distance, new_destination])  # 다음 인접 거리를 계산 하기 위해 큐에 삽입(새로운 지름길로부터)
     
   return distances
-
+ 
 graph = {
-    'A': {'B': 1, 'C': 4},
-    'B': {'A': 1, 'C': 2, 'D': 5},
-    'C': {'A': 4, 'B': 2, 'D': 1},
-    'D': {'B': 5, 'C': 1, 'E': 3},
-    'E': {'D': 3}
+    'A': {'B': 8, 'C': 1, 'D': 2},
+    'B': {},
+    'C': {'B': 5, 'D': 2},
+    'D': {}
 }
 
 start_node = 'A'
