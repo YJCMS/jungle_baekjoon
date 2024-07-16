@@ -1,3 +1,4 @@
+import sys
 import heapq  # 우선순위 큐 구현을 위함
 
 def dijkstra(graph, start):
@@ -20,13 +21,27 @@ def dijkstra(graph, start):
     
     return distances
 
-graph = {
-    'A': {'B': 8, 'C': 1, 'D': 2},
-    'B': {},
-    'C': {'B': 5, 'D': 2},
-    'D': {}
-}
+n, m, k, x = map(int, sys.stdin.readline().split())
 
-start_node = 'A'
-distances = dijkstra(graph, start_node)
-print(distances)
+graph = {i: {} for i in range(1, n+1)}
+
+for _ in range(m):
+    a, b = map(int, sys.stdin.readline().split())
+    graph[a][b] = 1  # 문제에서 주어진 간선의 가중치는 모두 1로 가정
+
+distances = dijkstra(graph, x)
+
+result = []
+
+for node, distance in distances.items():
+    if distance == k :
+        result.append(node)
+
+if result:
+    for city in result:
+        print(city)
+else:
+    print(-1)
+
+
+
