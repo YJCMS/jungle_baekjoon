@@ -1,3 +1,4 @@
+import sys
 from collections import deque
 
 # 위상정렬 Kahn's Algorithm
