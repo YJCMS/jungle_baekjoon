@@ -7,7 +7,7 @@ graph = {}
 for i in range(n):
     root, left, right = map(str, sys.stdin.readline().split())
     graph[root] = left, right
-  
+
 def preorder(v): # 전위순회
     if v != ".":
         print(v, end='')
@@ -31,5 +31,3 @@ print()
 inorder('A')
 print()
 postorder('A')
-
-    

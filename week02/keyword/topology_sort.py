@@ -4,17 +4,17 @@ from collections import deque
 # 위상정렬 Kahn's Algorithm
 def topology_sort():
     result = []
-    q = deque()
+    q = deque() 
 
     for i in range(1, n+1):
         if indegree[i] == 0:
             q.append(i)
 
     while q:
-        now = q.popleft()
-        result.append(now)
+        node = q.popleft()
+        result.append(node)
 
-        for i in graph[now]:
+        for i in graph[node]:
             indegree[i] -= 1
             if indegree[i] == 0:
                 q.append(i)

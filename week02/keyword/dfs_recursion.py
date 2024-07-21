@@ -1,6 +1,6 @@
 
 visited = []
-def dfs_recursive(graph, start):
+def dfs_recursion(graph, start):
     # 이미 방문한 노드라면 탐색 종료
     if start in visited:
         return
@@ -10,8 +10,8 @@ def dfs_recursive(graph, start):
     print(start, end=' ')
 
     # 인접 정점들에 대해 재귀 호출
-    for now in graph[start]:
-        dfs_recursive(graph, now)
+    for neighbor in graph[start]:
+        dfs_recursion(graph, neighbor)
 
 graph = {
     'A': ['B'],
